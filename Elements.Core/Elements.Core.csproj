@@ -1,0 +1,292 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>11</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants></DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>11</LangVersion>
+    <DocumentationFile>bin\Release\Elements.Core.xml</DocumentationFile>
+    <NoWarn>CS0649, CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseProfile|AnyCPU'">
+    <OutputPath>bin\ReleaseProfile\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <NoWarn>CS0649, CS1591</NoWarn>
+    <LangVersion>11</LangVersion>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>PROFILE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Animation\**" />
+    <Compile Remove="Modifiers\**" />
+    <EmbeddedResource Remove="Animation\**" />
+    <EmbeddedResource Remove="Modifiers\**" />
+    <None Remove="Animation\**" />
+    <None Remove="Modifiers\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Data Types\HalfVectors.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HalfVectors.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Data Types\SphericalHarmonics\SphericalHarmonics.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SphericalHarmonics.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Extensions\MathXDivision.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MathXDivision.tt</DependentUpon>
+    </Compile>
+    <Compile Update="CoderGen.cs">
+      <DependentUpon>CoderGen.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Collections\SlimListGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SlimListGen.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Colors\colorX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>colorX.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Data Types\Quaternions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Quaternions.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Data Types\VectorTypes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VectorTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Encoding\DataTreeSerializer\Generic Interface\LoadSaveHelper.cs">
+      <DependentUpon>LoadSaveHelper.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Extensions\MathXGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MathXGen.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Extensions\RobustParser.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RobustParser.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Data Types\Color.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Color.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Data Types\MatrixTypes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MatrixTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Encoding\DataTreeSerializer\Generic Interface\DataTreeDictionaryQuickValues.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataTreeDictionaryQuickValues.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Extensions\MathWrapper.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MathWrapper.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Utility\PrimitiveTryParsers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrimitiveTryParsers.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Extensions\MathXDivision.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MathXDivision.cs</LastGenOutput>
+    </Content>
+    <Content Include="CoderGen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CoderGen.cs</LastGenOutput>
+    </Content>
+    <Content Include="Collections\SlimListGen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SlimListGen.cs</LastGenOutput>
+    </Content>
+    <Content Include="Colors\colorX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>colorX.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data Types\Color.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Color.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data Types\MatrixTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MatrixTypes.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data Types\Primitives.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="Data Types\Quaternions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Quaternions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data Types\VectorTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VectorTypes.cs</LastGenOutput>
+    </Content>
+    <Content Include="Encoding\DataTreeSerializer\Generic Interface\DataTreeDictionaryQuickValues.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataTreeDictionaryQuickValues.cs</LastGenOutput>
+    </Content>
+    <Content Include="Encoding\DataTreeSerializer\Generic Interface\DataTreeValueTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="Encoding\DataTreeSerializer\Generic Interface\LoadSaveHelper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LoadSaveHelper.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\MathWrapper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MathWrapper.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\MathXGen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MathXGen.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\RobustParser.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RobustParser.cs</LastGenOutput>
+    </Content>
+    <Content Include="Utility\PrimitiveTryParsers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PrimitiveTryParsers.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RecyclableMemoryStream\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeGenerationConfig\CodeGenerationConfig.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BrotliSharpLib" Version="0.3.3" />
+    <PackageReference Include="C5" Version="3.0.0" />
+    <PackageReference Include="Enums.NET" Version="5.0.0" />
+    <PackageReference Include="LinqFaster" Version="1.0.0" />
+    <PackageReference Include="LinqFaster.SIMD" Version="1.0.3" />
+    <PackageReference Include="LinqFaster.SIMD.Parallel" Version="1.0.2" />
+    <PackageReference Include="LZMA-SDK" Version="22.1.1" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.9" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+    <PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
+    <PackageReference Include="Otp.NET" Version="1.4.1" />
+    <PackageReference Include="System.AppContext" Version="4.3.0" />
+    <PackageReference Include="System.Buffers" Version="4.6.1" />
+    <PackageReference Include="System.CodeDom" Version="10.0.9" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="10.0.9" />
+    <PackageReference Include="System.Console" Version="4.3.1" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.9" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.9" />
+    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.Tracing" Version="4.3.0" />
+    <PackageReference Include="System.Globalization" Version="4.3.0" />
+    <PackageReference Include="System.Globalization.Calendars" Version="4.3.0" />
+    <PackageReference Include="System.IO" Version="4.3.0" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+    <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.Management" Version="10.0.9" />
+    <PackageReference Include="System.Memory" Version="4.6.3" />
+    <PackageReference Include="System.Net.Primitives" Version="4.3.1" />
+    <PackageReference Include="System.Net.Sockets" Version="4.3.0" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.6.1" />
+    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
+    <PackageReference Include="System.Reflection" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
+    <PackageReference Include="System.Runtime.Handles" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <PackageReference Include="System.Security.AccessControl" Version="6.0.1" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="System.Security.Cryptography.Encoding" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
+    <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
+    <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="10.0.9" />
+    <PackageReference Include="System.Text.Json" Version="10.0.9" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageReference Include="System.ValueTuple" Version="4.6.2" />
+    <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
+    <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
+    <PackageReference Include="YellowDogMan.Brotli.NET" Version="2.1.1-ydm-0.2.3" />
+    <PackageReference Include="YellowDogMan.BepuPhysics" Version="2.4.0.2-ydm-0.1.7" />
+    <PackageReference Include="YellowDogMan.Elements.Data" Version="1.0.0" />
+    <PackageReference Include="YellowDogMan.Elements.Quantity" Version="0.3.0" />
+    <PackageReference Include="YellowDogMan.LZ4" Version="1.0.10.93-ydm-0.1.3" />
+    <PackageReference Include="YellowDogMan.MimeDetective" Version="0.3.0" />
+    <PackageReference Include="YellowDogMan.Renderite.Shared" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data Types\HalfVectors.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HalfVectors.tt</DependentUpon>
+    </None>
+    <None Include="Data Types\SphericalHarmonics\SphericalHarmonics.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SphericalHarmonics.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Data Types\HalfVectors.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HalfVectors.cs</LastGenOutput>
+    </None>
+    <None Update="Data Types\SphericalHarmonics\SphericalHarmonics.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SphericalHarmonics.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <PropertyGroup />
+</Project>
