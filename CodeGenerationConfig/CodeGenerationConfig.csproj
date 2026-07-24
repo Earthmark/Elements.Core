@@ -4,6 +4,8 @@
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>11</LangVersion>
+
+    <PackageId>YellowDogMan.Elements.Core.CodeGenerationConfig</PackageId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseProfile|AnyCPU'">
     <OutputPath>bin\ReleaseProfile\</OutputPath>
