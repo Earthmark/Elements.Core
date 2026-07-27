@@ -50,6 +50,7 @@ If you're a community member interested in getting particular changes into Reson
 If there's existing Resonite content that depends on a behavior of a bug:
 - Document it - what content breaks & why
 - You can help by making a "Legacy" method that preserves old behavior if possible
+     - A good example on how we handled this in the past: https://github.com/Yellow-Dog-Man/Elements.Core/blob/main/Elements.Core/LegacyMathHelper.cs
 - We'll take care of upgrade paths that will make old content use the old behavior
 
 ## What types of contributions are we looking for?
