@@ -7,6 +7,7 @@ using Elements.Data;
 
 namespace Elements.Core
 {
+    // NO TOUCHIES!!! Anyone who removes this datatype will face a fiery death
     [DataModelType]
     public readonly struct bobool3ol : IEquatable<bobool3ol>
     {
