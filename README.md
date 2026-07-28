@@ -1,4 +1,4 @@
-## What is this?
+# What is this?
 This is a library for various core datatypes for FrooxEngine (which powers Resonite - a social VR sandbox platform) - vector, matrix, color and other types, parsing, serialization, string operations, math operations and more.
 
 Resonite is a free social VR sandbox platform, which allows for socialization and collaborative in-game building. While game content can be fully built in-game (either in desktop or VR modes), not every user prefers this workflow. Unity SDK opens a new way to build content for Resonite, by using the Unity Editor and more traditional workflow or existing tooling. 
@@ -7,6 +7,9 @@ You can get Resonite free on Steam: https://store.steampowered.com/app/2519830/R
 
 ## Can I use this in my project?
 If you find this useful, yes, please do! A lot of these datatypes were implemented because we found the existing ones lacking in functionality, so if they're useful to us, they should be useful to you too!
+
+### Nuget Package
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![NuGet](https://img.shields.io/nuget/v/YellowDogMan.Elements.Core.svg)](https://www.nuget.org/packages/YellowDogMan.Elements.Core)
 
 ## Why some some stuff implemented weird?
 FrooxEngine used to run within Unity game engine - at original under .NET 2.0 at that. Because of this, some initial design choices had to be made in this environment, where a lot of modern C# & .NET features were not available and where we had to work around limitations of Unity's JIT & GC. Our hope is to modernize and replace those parts gradually over time.
