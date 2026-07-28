@@ -82,3 +82,10 @@ If there's existing Resonite content that depends on a behavior of a bug:
         - We recommend waiting for a team member to sign off your changes first if they're going to take a lot of effort
         - We can potentially reject changes if they do not fit our desired style
     - Use modern, idiomatic C# & .NET style
+
+### We reserve right to reject any contributions
+Resonite and its content is highly dependent on this library. Some changes could introduce potential compatibility issues, break content, performance regressions or introduce maintenance burden we are not willing to take on.
+
+As such, we reserve right to reject any changes for any reason - however you are welcome to create a fork for your own project.
+
+We strongly recommend following the steps above to avoid the risk of rejection. If you're unsure, create an issue describing proposed changes first and wait for us to give you a green light.
