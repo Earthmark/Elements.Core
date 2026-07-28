@@ -71,4 +71,11 @@ If there's existing Resonite content that depends on a behavior of a bug:
     - Want operations for datatypes that we do not support (e.g. complex number types, new matrix operations and so on?)
     - Any new additions should be in spirit of this library and relatively simple - do not hijack this library to add complex features that don't have much to do with this
 - Cleanup
-    - A lot of the code is pretty old and tangled, 
+    - A lot of the code is pretty old and tangled, so efforts with modernizing the codebase would be appreciated
+    - Focus on one area at the time - the smaller the PR, the better
+    - Write tests to ensure that there's no behavior breakage
+    - **Check if there's an open issue first**
+    - **Create an issue if there's not** before you start to avoid two people working on the same area
+        - We recommend waiting for a team member to sign off your changes first if they're going to take a lot of effort
+        - We can potentially reject changes if they do not fit our desired style
+    - Use modern, idiomatic C# & .NET style
