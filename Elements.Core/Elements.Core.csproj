@@ -5,26 +5,8 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
     <PackageId>YellowDogMan.Elements.Core</PackageId>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>11</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineConstants></DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>11</LangVersion>
-    <DocumentationFile>bin\Release\Elements.Core.xml</DocumentationFile>
-    <NoWarn>$(NoWarn);CS0649;CS1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseProfile|AnyCPU'">
-    <OutputPath>bin\ReleaseProfile\</OutputPath>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <NoWarn>$(NoWarn);CS0649;CS1591</NoWarn>
-    <LangVersion>11</LangVersion>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DefineConstants>PROFILE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Data Types\HalfVectors.cs">
