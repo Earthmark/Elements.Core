@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="CodeGenerationConfig/CodeGenerationConfig.csproj" />
+  <Project Path="Elements.Core.Benchmark/Elements.Core.Benchmark.csproj" />
   <Project Path="Elements.Core.Tests/Elements.Core.Tests.csproj" />
   <Project Path="Elements.Core/Elements.Core.csproj" />
 </Solution>
