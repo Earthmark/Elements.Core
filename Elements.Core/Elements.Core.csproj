@@ -15,13 +15,13 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>11</LangVersion>
     <DocumentationFile>bin\Release\Elements.Core.xml</DocumentationFile>
-    <NoWarn>CS0649, CS1591</NoWarn>
+    <NoWarn>$(NoWarn);CS0649;CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseProfile|AnyCPU'">
     <OutputPath>bin\ReleaseProfile\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
-    <NoWarn>CS0649, CS1591</NoWarn>
+    <NoWarn>$(NoWarn);CS0649;CS1591</NoWarn>
     <LangVersion>11</LangVersion>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DefineConstants>PROFILE</DefineConstants>
