@@ -1,14 +1,14 @@
 name: CI Tests
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "**" ]
 
 permissions:
-  contents:
-    read
+  contents: read
 
 concurrency: # Prevent multiple runs per PR.
   group: ${{ github.workflow }}-${{ github.head_ref }}
@@ -27,4 +27,12 @@ jobs:
         dotnet-version: 10.0.x
     - run: dotnet restore
     - run: dotnet build --no-restore
-    - run: dotnet test --no-build --verbosity normal
+    - run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx"
+    - name: Generate Test Report
+      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # V3.0.0
+      if: ${{ !cancelled() }} 
+      with:
+        name: Elements.Quantity.Test
+        path: '**/test-results.trx'
+        reporter: dotnet-trx
+        fail-on-error: true
