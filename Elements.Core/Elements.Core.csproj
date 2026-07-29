@@ -27,14 +27,6 @@
     <DefineConstants>PROFILE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Animation\**" />
-    <Compile Remove="Modifiers\**" />
-    <EmbeddedResource Remove="Animation\**" />
-    <EmbeddedResource Remove="Modifiers\**" />
-    <None Remove="Animation\**" />
-    <None Remove="Modifiers\**" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Data Types\HalfVectors.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -179,12 +171,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PrimitiveTryParsers.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RecyclableMemoryStream\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeGenerationConfig\CodeGenerationConfig.csproj" />
