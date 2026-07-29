@@ -6,6 +6,14 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents:
+    read
+
+concurrency: # Prevent multiple runs per PR.
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
 
