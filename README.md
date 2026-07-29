@@ -66,7 +66,7 @@ If there's existing Resonite content that depends on a behavior of a bug:
     - Be careful about changing behavior (test the changes in Resonite) and add tests first
 - Tests
     - More tests are good!
-    - For most contributions, we ask you add tests firts
+    - For most contributions, we ask you add tests first
     - They avoid content breakage when changes happen
     - Add Benchmark.NET tests as well to ensure we don't get regressions
 - New Features
