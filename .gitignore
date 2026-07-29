@@ -260,3 +260,6 @@ paket-files/
 
 # Built direnv environments
 .direnv/
+
+# Benchmark.net artifacts
+BenchmarkDotNet.Artifacts/
