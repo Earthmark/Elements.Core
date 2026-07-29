@@ -15,7 +15,6 @@
     <PackageReference Include="MSTest" Version="4.2.3" />
     <PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="4.2.3" />
-    <PackageReference Include="System.ValueTuple" Version="4.6.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Elements.Core\Elements.Core.csproj" />
