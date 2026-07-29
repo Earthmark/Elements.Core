@@ -6,7 +6,6 @@
 
     <PackageId>YellowDogMan.Elements.Core</PackageId>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>11</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Data Types\HalfVectors.cs">
