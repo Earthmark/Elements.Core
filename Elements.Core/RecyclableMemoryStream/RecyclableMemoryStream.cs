@@ -633,7 +633,7 @@ namespace Elements.Core
             {
                 int toRead = Math.Min(length, copyBuffer.Length);
 
-                stream.Read(copyBuffer, 0, toRead);
+                stream.ReadExactly(copyBuffer, 0, toRead);
                 Write(copyBuffer, 0, toRead);
 
                 length -= toRead;
