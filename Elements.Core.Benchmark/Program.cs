@@ -1,3 +1,3 @@
-﻿using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Running;
 
-BenchmarkRunner.Run(typeof(Program).Assembly);
+BenchmarkRunner.Run(typeof(Program).Assembly, null, args);
