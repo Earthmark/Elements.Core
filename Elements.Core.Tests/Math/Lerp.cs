@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
-namespace Elements.Core.Tests
+﻿namespace Elements.Core.Tests
 {
     [TestClass]
     public class Lerp

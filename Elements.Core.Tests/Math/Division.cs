@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Elements.Core.Tests
+﻿namespace Elements.Core.Tests
 {
     [TestClass]
     public class Division

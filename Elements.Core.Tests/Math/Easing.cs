@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Elements.Core.Tests.Math
+﻿namespace Elements.Core.Tests.Math
 {
     [TestClass]
     public class Easing

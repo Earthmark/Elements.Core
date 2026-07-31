@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Elements.Core; using Elements.Data;
-using System;
-using System.Configuration;
-using System.Collections.Generic;
-
-namespace Elements.Core.Tests
+﻿namespace Elements.Core.Tests
 {
     public class SimpleClass
     {
@@ -13,7 +7,7 @@ namespace Elements.Core.Tests
 
         }
     }
-
+    
     public class RootClass<T>
     {
         public enum NestedEnum { A, B, C, D };
