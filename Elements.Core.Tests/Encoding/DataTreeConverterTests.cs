@@ -175,14 +175,32 @@ public class DataTreeConverterTests
     {
         // Assert.AreEquivalent has a limit of 256, but each layer is two properties.
         const int DEPTH = 125;
-        var root = new DataTreeDictionary();
+        var root = new DataTreeDictionary { { "Depth", 0L } };
         var current = root;
 
-        for (long i = 0; i < DEPTH; i++)
+        for (long i = 1; i < DEPTH; i++)
         {
             var child = new DataTreeDictionary { { "Depth", i } };
 
-            current.Add("Child", child);
+            current.Add($"Key={i}", child);
+            current = child;
+        }
+
+        return root;
+    }
+
+    static DataTreeList DeeplyNestedList()
+    {
+        // Assert.AreEquivalent has a limit of 256, but each layer is two properties.
+        const int DEPTH = 125;
+        var root = new DataTreeList { new DataTreeValue(0L) };
+        var current = root;
+
+        for (long i = 1; i < DEPTH; i++)
+        {
+            var child = new DataTreeList { new DataTreeValue(i) };
+
+            current.Add(child);
             current = child;
         }
 
@@ -197,7 +215,7 @@ public class DataTreeConverterTests
 
         for (long i = 0; i < COUNT; i++)
         {
-            tree.Add("Key" + i, i);
+            tree.Add($"Key={i}", i);
         }
 
         return tree;
@@ -252,7 +270,27 @@ public class DataTreeConverterTests
 
         var order = node.EnumerateTree()
             .OfType<DataTreeValue>().Select(v => (int)v.Value).ToArray();
-        
+
         CollectionAssert.AreEqual(Enumerable.Range(0, 11).ToArray(), order);
+    }
+
+    [TestMethod]
+    public void EnumerateTreeChildren()
+    {
+        foreach (var (index, child) in DeeplyNestedTree().EnumerateTree()
+                     .OfType<DataTreeDictionary>().Index())
+        {
+            Assert.AreEqual((long)index, ((DataTreeValue)child["Depth"]).Value);
+        }
+    }
+
+    [TestMethod]
+    public void EnumerateListChildren()
+    {
+        foreach (var (index, child) in DeeplyNestedList().EnumerateTree()
+                     .OfType<DataTreeList>().Index())
+        {
+            Assert.AreEqual((long)index, ((DataTreeValue)child[0]).Value);
+        }
     }
 }
