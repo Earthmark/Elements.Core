@@ -12,6 +12,7 @@ public class DataTreeConverterTests
     [DataRow("asset.7zbson")]
     [DataRow("asset.brson")]
     [DataRow("ASSET.LZ4BSON")]
+    [DataRow("asset.frdt")]
     [TestMethod]
     public void IsSupportedFormat_SupportedFormat_ReturnsTrue(string file)
     {
@@ -20,7 +21,6 @@ public class DataTreeConverterTests
 
     [DataRow("asset.bson")]
     [DataRow("asset.json")]
-    [DataRow("asset.frdt")]
     [DataRow("asset")]
     [TestMethod]
     public void IsSupportedFormat_UnsupportedFormat_ReturnsFalse(string file)
@@ -31,12 +31,13 @@ public class DataTreeConverterTests
     [DataRow(DataTreeConverter.Compression.LZ4)]
     [DataRow(DataTreeConverter.Compression.LZMA)]
     [DataRow(DataTreeConverter.Compression.Brotli)]
+    [DataRow(DataTreeConverter.Compression.None)]
     [TestMethod]
     public void SaveLoad_CompressionFormat_CompressedTreeEqual(DataTreeConverter.Compression compression)
     {
         var tree = StableKitchenSinkTree().Tree;
 
-        var bytes = Serialize(tree, WriterFor(compression));
+        var bytes = Serialize(tree, compression);
 
         using var stream = new MemoryStream(bytes);
         var newTree = DataTreeConverter.LoadAuto(stream);
@@ -75,17 +76,20 @@ public class DataTreeConverterTests
     }
 
     [TestMethod]
-    public void LoadAuto_UnknownCompressionFormat_ThrowsNotImplementedException()
+    public void LoadAuto_UnknownCompressionFormat_ThrowsArgumentOutOfRangeException()
     {
         var bytes = Encoding.ASCII.GetBytes(DataTreeConverter.HEADER)
-            // Pads out the header enough to look like a compression format and data.
+            // Pads out the header enough to look like a version and compression.
+            .Concat(BitConverter.GetBytes(0))
+            // This would be a very high-number compression format.
+            .Concat(new byte[]{127})
             .Concat(new byte[100]).ToArray();
         using var stream = new MemoryStream(bytes);
 
         // 0 is a compression format, and the compression format None.
         // This is a bit of a hack, if this test starts failing due to not throwing the proper exception,
         // it may be due to added support for uncompressed files.
-        Assert.Throws<NotImplementedException>(() => DataTreeConverter.LoadAuto(stream));
+        Assert.Throws<ArgumentOutOfRangeException>(() => DataTreeConverter.LoadAuto(stream));
     }
 
     /// <summary>
@@ -382,26 +386,15 @@ public class DataTreeConverterTests
 
     static DataTreeDictionary ResaveTree(DataTreeDictionary tree)
     {
-        var bytes = Serialize(tree, DataTreeConverter.ToLZ4BSON);
+        var bytes = Serialize(tree, DataTreeConverter.Compression.Brotli);
         using var stream = new MemoryStream(bytes);
         return DataTreeConverter.LoadAuto(stream);
     }
 
-    static Action<DataTreeDictionary, Stream> WriterFor(DataTreeConverter.Compression compression)
-    {
-        return compression switch
-        {
-            DataTreeConverter.Compression.LZ4 => DataTreeConverter.ToLZ4BSON,
-            DataTreeConverter.Compression.LZMA => DataTreeConverter.To7zBSON,
-            DataTreeConverter.Compression.Brotli => (root, stream) => DataTreeConverter.ToBRSON(root, stream),
-            _ => throw new NotSupportedException("No writer for " + compression)
-        };
-    }
-
-    static byte[] Serialize(DataTreeDictionary root, Action<DataTreeDictionary, Stream> writer)
+    static byte[] Serialize(DataTreeDictionary root, DataTreeConverter.Compression compression)
     {
         using var stream = new MemoryStream();
-        writer(root, stream);
+        DataTreeConverter.Save(root, stream, compression);
 
         // ToArray works even if the writer closed the stream
         return stream.ToArray();
