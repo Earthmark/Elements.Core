@@ -48,6 +48,7 @@ namespace Elements.Core
             }
         }
 
+        [Obsolete("Replace with `[item]` from C# 12")]
         public SingleItemEnumerable(T item)
         {
             this.item = item;
@@ -60,6 +61,7 @@ namespace Elements.Core
 
     public static class SingleItemEnumerableHelper
     {
+        [Obsolete("Replace with `[item]` from C# 12")]
         public static SingleItemEnumerable<T> AsSingleItemEnumerable<T>(this T item) => new SingleItemEnumerable<T>(item);
     }
 }
