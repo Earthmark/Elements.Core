@@ -7,10 +7,11 @@ using Newtonsoft.Json.Bson;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using SevenZip;
-using LZ4;
 using BrotliSharpLib;
 using System.ComponentModel.Design.Serialization;
 using System.Runtime.InteropServices.ComTypes;
+using K4os.Compression.LZ4;
+using K4os.Compression.LZ4.Streams;
 
 namespace Elements.Core
 {
@@ -201,12 +202,10 @@ namespace Elements.Core
 
         public static DataTreeDictionary FromRawLZ4BSON(Stream stream)
         {
-            using (var lz = new LZ4Stream(stream, LZ4StreamMode.Decompress))
-            using (var bson = new BsonDataReader(lz))
-            {
-                bson.CloseInput = false;
-                return (DataTreeDictionary)Read(bson);
-            }
+            using var lz = LZ4Stream.Decode(stream);
+            using var bson = new BsonDataReader(lz);
+            bson.CloseInput = false;
+            return (DataTreeDictionary)Read(bson);
         }
 
         public static DataTreeDictionary FromRawBRSON(Stream stream)
@@ -290,12 +289,13 @@ namespace Elements.Core
         {
             WriteHeader(stream, Compression.LZ4);
 
-            using (var lz = new LZ4Stream(stream, LZ4StreamMode.Compress, LZ4StreamFlags.HighCompression))
-            using (var bson = new BsonDataWriter(lz))
+            using var lz = LZ4Stream.Encode(stream, new LZ4EncoderSettings
             {
-                bson.CloseOutput = false;
-                Write(root, bson);
-            }
+                CompressionLevel = LZ4Level.L09_HC,
+            }, true);
+            using var bson = new BsonDataWriter(lz);
+            bson.CloseOutput = false;
+            Write(root, bson);
         }
 
         public static void ToBRSON(DataTreeDictionary root, Stream stream, int quality = 9)
