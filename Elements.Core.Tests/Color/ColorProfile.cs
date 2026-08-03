@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Elements.Core; using Elements.Data;
-using System;
-using Renderite.Shared;
+﻿using Renderite.Shared;
 
 namespace Elements.Core.Tests
 {

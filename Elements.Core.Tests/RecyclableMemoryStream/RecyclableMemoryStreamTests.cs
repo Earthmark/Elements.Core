@@ -1,6 +1,4 @@
-﻿using System.IO.Pipes;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO.Pipes;
 
 namespace Elements.Core.Tests;
 

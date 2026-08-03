@@ -1,8 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Elements.Core; using Elements.Data;
-using System;
-
-namespace Elements.Core.Tests
+﻿namespace Elements.Core.Tests
 {
     [TestClass]
     public class Slerp

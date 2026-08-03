@@ -1,8 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Elements.Core; using Elements.Data;
-using System;
-
-namespace Elements.Core.Tests.Math
+﻿namespace Elements.Core.Tests.Math
 {
     [TestClass]
     public class Factorial
